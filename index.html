@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ORBIT — Complex network. Simple journey.</title>
+  <meta name="description" content="ORBIT — A unified futuristic transportation platform for 2100. Autonomous buses, trains, air transit, and smart roads in one experience." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+ 
+     <!-- TOP NAV -->
+<nav class="topnav" aria-label="Main navigation">
+  <span class="nav-logo" aria-label="ORBIT">ORBIT</span>
+  <div class="nav-links" role="list">
+    <button class="nav-link active" data-page="home" onclick="nav('home')" role="listitem">Home</button>
+    <button class="nav-link" data-page="journey" onclick="nav('journey')" role="listitem">Plan Journey</button>
+    <button class="nav-link" data-page="live" onclick="nav('live')" role="listitem">Live Journey</button>
+    <button class="nav-link" data-page="explore" onclick="nav('explore')" role="listitem">Explore</button>
+    <button class="nav-link" data-page="profile" onclick="nav('profile')" role="listitem">Profile</button>
+  </div>
+  <div class="nav-actions">
+    <div class="nav-status" aria-label="Network: All systems normal">
+      <span class="live-pulse" aria-hidden="true"></span>
+      All systems normal
+    </div>
+    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode">
+      <span class="theme-icon theme-icon--dark" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </span>
+      <span class="theme-icon theme-icon--light" aria-hidden="true" style="display:none">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </span>
+    </button>
+    <button class="mobile-menu-btn" id="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="icon-menu"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="icon-close" style="display:none"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <button class="btn-nav-ghost" onclick="openAuth('login')" aria-label="Sign in to ORBIT">Sign in</button>
+    <button class="btn-nav" onclick="openAuth('signup')" aria-label="Create an ORBIT account">Get started</button>
+  </div>
+</nav>
+
+<!-- Mobile nav drawer -->
+<div class="mobile-nav-drawer" id="mobile-nav-drawer" aria-hidden="true">
+  <button class="mobile-nav-link" data-page="home" onclick="nav('home');closeMobileMenu()">Home</button>
+  <button class="mobile-nav-link" data-page="journey" onclick="nav('journey');closeMobileMenu()">Plan Journey</button>
+  <button class="mobile-nav-link" data-page="live" onclick="nav('live');closeMobileMenu()">Live Journey</button>
+  <button class="mobile-nav-link" data-page="explore" onclick="nav('explore');closeMobileMenu()">Explore</button>
+  <button class="mobile-nav-link" data-page="profile" onclick="nav('profile');closeMobileMenu()">Profile</button>
+  <div class="mobile-nav-auth">
+    <button class="mobile-nav-auth-ghost" onclick="closeMobileMenu();openAuth('login')">Sign in</button>
+    <button class="mobile-nav-auth-btn" onclick="closeMobileMenu();openAuth('signup')">Get started</button>
+  </div>
+</div>
+
+
+<!-- ╔══════════════════════════════════════╗
+     PAGE: HOME
+╚══════════════════════════════════════╝ -->
+<div id="page-home" class="page active" aria-label="Home">
+
+  <!-- ── HERO: FULL-BLEED IMAGE ── -->
+  <section class="hero2" aria-label="ORBIT hero">
+
+    <!-- Full-bleed background image -->
+    <img src="hero-bg.png" alt="Futuristic ORBIT transportation — holographic UI, maglev train, Sri Lanka 2100" class="hero2-bg-img" />
+
+    <!-- Dark gradient overlays for text readability -->
+    <div class="hero2-overlay" aria-hidden="true"></div>
+
+    <!-- Content centred over image -->
+    <div class="hero2-left">
+
+      <!-- Live pill -->
+      <div class="hero2-live-pill" aria-label="Network live">
+        <span class="live-pulse-ring" aria-hidden="true"></span>
+        <span class="live-pulse" aria-hidden="true"></span>
+        Network live · 840 vehicles active
+      </div>
+
+      <div class="hero2-label" aria-hidden="true">Sri Lanka · 2100 · Transportation Platform</div>
+      <h1 class="hero2-headline">
+        <span class="hero2-line1">Complex</span>
+        <span class="hero2-line2">network.</span>
+        <span class="hero2-line3"><em>Simple journey.</em></span>
+      </h1>
+      <p class="hero2-sub">
+        One platform. Every mode of transport. ORBIT handles the complexity — rail, road, air, and autonomous shuttles — so you only ever need to think about where you're going.
+      </p>
+
+      <!-- Search bar -->
+      <div class="hero2-search" role="search" aria-label="Destination search">
+        <div class="hero2-search-from">
+          <span class="hero2-search-dot hero2-search-dot--from" aria-hidden="true"></span>
+          <input class="hero2-search-input" type="text" value="Kandy Central" aria-label="Departure location" />
+        </div>
+        <div class="hero2-search-divider" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+        <div class="hero2-search-to">
+          <span class="hero2-search-dot hero2-search-dot--to" aria-hidden="true"></span>
+          <input class="hero2-search-input" type="text" placeholder="Where to?" aria-label="Destination" id="hero-dest-input" />
+        </div>
+        <button class="hero2-search-btn" onclick="nav('journey')" aria-label="Search routes">
+          Search routes
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+
+      <!-- Quick destinations -->
+      <div class="hero2-quick" aria-label="Quick destinations">
+        <span class="hero2-quick-label">Quick:</span>
+        <button class="hero2-quick-btn" onclick="setDest('Colombo Central')">Colombo</button>
+        <button class="hero2-quick-btn" onclick="setDest('Airport')">Airport</button>
+        <button class="hero2-quick-btn" onclick="setDest('Galle')">Galle</button>
+        <button class="hero2-quick-btn" onclick="setDest('Jaffna')">Jaffna</button>
+      </div>
+
+      <!-- Stats row -->
+      <div class="hero2-mini-stats" aria-label="Network statistics">
+        <div class="hero2-mini-stat"><span class="hero2-mini-num">840</span><span class="hero2-mini-key">Vehicles</span></div>
+        <div class="hero2-mini-sep" aria-hidden="true"></div>
+        <div class="hero2-mini-stat"><span class="hero2-mini-num">2.4M</span><span class="hero2-mini-key">Daily journeys</span></div>
+        <div class="hero2-mini-sep" aria-hidden="true"></div>
+        <div class="hero2-mini-stat"><span class="hero2-mini-num">99.7%</span><span class="hero2-mini-key">On-time</span></div>
+        <div class="hero2-mini-sep" aria-hidden="true"></div>
+        <div class="hero2-mini-stat"><span class="hero2-mini-num">0g</span><span class="hero2-mini-key">CO₂</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Transport Modes -->
+  <section class="section" aria-label="Transport modes">
+    <div class="section-header">
+      <p class="section-tag" aria-hidden="true">Four modes, one platform</p>
+      <h2 class="section-h">Every way to move,<br>connected.</h2>
+      <p class="section-sub">ORBIT integrates every form of transport into a single intelligent network. No app switching. No confusion. Just go.</p>
+    </div>
+    <div class="modes-grid" role="list">
+      <div class="mode-card" role="listitem" aria-label="HyperRail">
+        <div class="mode-card-icon" style="background:rgba(99,102,241,0.15)" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M4 12h16"/><path d="M8 18h.01M16 18h.01"/></svg>
+        </div>
+        <div class="mode-card-name">HyperRail</div>
+        <div class="mode-card-desc">Magnetic levitation trains connecting major cities at 800 km/h with real-time tracking and guaranteed connections.</div>
+        <div class="mode-card-stat">
+          <span>14 routes active</span>
+          <strong style="color:#818cf8">On time</strong>
+        </div>
+      </div>
+      <div class="mode-card" role="listitem" aria-label="Autonomous Bus">
+        <div class="mode-card-icon" style="background:rgba(16,185,129,0.15)" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.5"><path d="M8 6v6"/><path d="M16 6v6"/><path d="M2 12h19.6"/><path d="M18 18h3s.5-1.7.8-4.8c.1-1.1.2-2.2.2-3.2A7 7 0 0 0 4 9v4c0 .3 0 .6.1.9l.7 3.1H18Z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+        </div>
+        <div class="mode-card-name">Autonomous Bus</div>
+        <div class="mode-card-desc">Self-driving electric buses with dynamic routing, zero emissions, and door-to-door precision for the last mile.</div>
+        <div class="mode-card-stat">
+          <span>840 vehicles active</span>
+          <strong style="color:#34d399">Normal</strong>
+        </div>
+      </div>
+      <div class="mode-card" role="listitem" aria-label="Air Transit">
+        <div class="mode-card-icon" style="background:rgba(245,158,11,0.15)" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="1.5"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21 4 19.5 2.5c-1.5-1.5-3.5-1.5-5 0L11 6 2.8 6.2c-.5 0-.9.3-1.1.7l-.4 1.5c-.1.5.1 1 .5 1.3L6 12l-1.8 1.8c-.5.5-.5 1.2 0 1.7l1.5 1.5c.5.5 1.2.5 1.7 0L9 15l3.5 2.5c.3.4.8.6 1.3.5l1.5-.4c.4-.2.7-.6.7-1.1l-.2-3.3Z"/></svg>
+        </div>
+        <div class="mode-card-name">Air Transit</div>
+        <div class="mode-card-desc">Autonomous aerial vehicles and chartered sky corridors for city-to-city leaps above the traffic.</div>
+        <div class="mode-card-stat">
+          <span>3 corridors</span>
+          <strong style="color:#fbbf24">Low traffic</strong>
+        </div>
+      </div>
+      <div class="mode-card" role="listitem" aria-label="Smart Roads">
+        <div class="mode-card-icon" style="background:rgba(139,92,246,0.15)" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="1.5"><path d="M3 17 12 3l9 14"/><path d="M12 3v14"/><path d="M5 17h14"/></svg>
+        </div>
+        <div class="mode-card-name">Smart Roads</div>
+        <div class="mode-card-desc">AI-optimized road network with embedded sensors, adaptive signals, and real-time vehicle coordination.</div>
+        <div class="mode-card-stat">
+          <span>12,400 km covered</span>
+          <strong style="color:#a78bfa">Normal</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section" aria-label="How ORBIT works">
+    <div class="section-header">
+      <p class="section-tag" aria-hidden="true">How it works</p>
+      <h2 class="section-h">You say where.<br>We handle everything.</h2>
+    </div>
+    <div class="steps-grid" role="list">
+      <div class="step" role="listitem">
+        <div class="step-num" aria-hidden="true">01</div>
+        <div class="step-title">Tell ORBIT your destination</div>
+        <div class="step-desc">Type, speak, or tap. ORBIT understands where you want to go, no matter how you say it.</div>
+      </div>
+      <div class="step" role="listitem">
+        <div class="step-num" aria-hidden="true">02</div>
+        <div class="step-title">We build your optimal route</div>
+        <div class="step-desc">Our AI combines live traffic, schedules, and your preferences to find the best path across all modes.</div>
+      </div>
+      <div class="step" role="listitem">
+        <div class="step-num" aria-hidden="true">03</div>
+        <div class="step-title">Journey Guardian monitors everything</div>
+        <div class="step-desc">Delays, missed transfers, traffic — ORBIT adjusts automatically and tells you exactly what to do next.</div>
+      </div>
+      <div class="step" role="listitem">
+        <div class="step-num" aria-hidden="true">04</div>
+        <div class="step-title">You arrive. We handle the rest.</div>
+        <div class="step-desc">Credits deducted automatically. Journey logged. Feedback optional. It's done before you reach the door.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer-wrapper">
+    <div class="footer">
+      <div class="footer-brand">
+        <span class="nav-logo">ORBIT</span>
+        <p class="footer-desc">Complex network. Simple journey.<br>Transportation for 2100 and beyond.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Platform</div>
+        <div class="footer-links">
+          <button class="footer-link" onclick="nav('journey')">Plan Journey</button>
+          <button class="footer-link" onclick="nav('live')">Live Journey</button>
+          <button class="footer-link" onclick="nav('explore')">Network Map</button>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Modes</div>
+        <div class="footer-links">
+          <span class="footer-link">HyperRail</span>
+          <span class="footer-link">Autonomous Bus</span>
+          <span class="footer-link">Air Transit</span>
+          <span class="footer-link">Smart Roads</span>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Account</div>
+        <div class="footer-links">
+          <button class="footer-link" onclick="nav('profile')">Profile</button>
+          <button class="footer-link" onclick="nav('profile')">ORBIT Pass</button>
+          <button class="footer-link" onclick="navProfile('a11y')">Accessibility</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2100 ORBIT Transportation Authority · All rights reserved</span>
+      <span class="footer-copy">ORBIT ID: ORB-4829</span>
+    </div>
+  </footer>
+</div>
+
+
+<!-- ╔══════════════════════════════════════╗
+     PAGE: JOURNEY PLANNER
+╚══════════════════════════════════════╝ -->
+<div id="page-journey" class="page" aria-label="Plan your journey">
+  <div class="section" style="padding-top:60px">
+    <div class="section-header-split">
+      <div>
+        <p class="section-tag" aria-hidden="true">Journey planner</p>
+        <h1 class="section-h">Plan your route</h1>
+        <p class="section-sub">Search routes across all ORBIT modes. We'll find the best path for you.</p>
+      </div>
+    </div>
+
+    <!-- Search form -->
+    <div class="jp-search-form">
+      <div class="planner-field">
+        <label class="planner-label" for="jp-from">From</label>
+        <input class="planner-input" id="jp-from" type="text" value="Kandy Central" aria-label="Departure location" />
+      </div>
+      <div class="planner-field">
+        <label class="planner-label" for="jp-to">To</label>
+        <input class="planner-input" id="jp-to" type="text" placeholder="Colombo Central" aria-label="Destination" />
+      </div>
+      <div class="planner-field">
+        <label class="planner-label" for="jp-date">Date</label>
+        <input class="planner-input" id="jp-date" type="date" aria-label="Travel date" />
+      </div>
+      <div class="planner-field">
+        <label class="planner-label" for="jp-time">Time</label>
+        <input class="planner-input" id="jp-time" type="time" value="19:00" aria-label="Departure time" />
+      </div>
+      <button class="btn-primary" onclick="nav('live')" aria-label="Search for routes" style="padding:14px 28px;white-space:nowrap">
+        Search Routes
+      </button>
+    </div>
+
+    <!-- Route cards full-page -->
+    <div class="jp-routes-grid" role="list" aria-label="Available routes">
+
+      <article role="listitem" style="background:linear-gradient(135deg,var(--surface2),var(--surface3));border:1px solid rgba(99,102,241,0.3);border-radius:var(--r2);padding:28px;display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <span class="rc-badge rc-badge--fast" style="font-size:0.65rem">FASTEST</span>
+          <span style="font-family:var(--mono);font-size:0.75rem;color:var(--text2)">Arrive 7:40 PM</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <span class="mode-chip mode-rail">HyperRail</span>
+          <span style="color:var(--text3)">→</span>
+          <span class="mode-chip mode-bus">Autonomous Shuttle</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;padding-top:8px;border-top:1px solid var(--border)">
+          <div><span style="display:block;font-size:1.1rem;font-weight:700;color:var(--text)">38 min</span><span style="display:block;font-family:var(--mono);font-size:0.65rem;color:var(--text3);margin-top:2px">DURATION</span></div>
+          <div><span style="display:block;font-size:1.1rem;font-weight:700;color:var(--text)">1</span><span style="display:block;font-family:var(--mono);font-size:0.65rem;color:var(--text3);margin-top:2px">TRANSFER</span></div>
+          <div><span style="display:block;font-size:1.1rem;font-weight:700;color:var(--text)">840 cr</span><span style="display:block;font-family:var(--mono);font-size:0.65rem;color:var(--text3);margin-top:2px">CREDITS</span></div>
+        </div>
+        <!-- Mini timeline -->
+        <div style="display:flex;flex-direction:column;gap:10px;padding:16px;background:var(--bg2);border-radius:var(--r);font-size:0.78rem">
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--text2);font-weight:500">Kandy Central</span><span style="font-family:var(--mono);color:var(--text3)">7:02 PM</span></div>
+          <div style="display:flex;align-items:center;gap:8px;color:var(--text3);font-family:var(--mono);font-size:0.72rem;padding-left:8px"><span style="width:1px;height:14px;background:var(--border)"></span>HyperRail · Platform 04 · 28 min</div>
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--text2)">Colombo Junction</span><span style="font-family:var(--mono);color:var(--text3)">7:32 PM</span></div>
+          <div style="display:flex;align-items:center;gap:8px;color:var(--text3);font-family:var(--mono);font-size:0.72rem;padding-left:8px"><span style="width:1px;height:14px;background:var(--border)"></span>Shuttle A17 · Gate 3 · 6 min</div>
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--accent);font-weight:600">Colombo Central</span><span style="font-family:var(--mono);color:var(--accent)">7:40 PM</span></div>
+        </div>
+        <button class="btn-primary" style="width:100%" onclick="nav('live')" aria-label="Choose this fastest route">Choose Route →</button>
+      </article>
+
+      <article role="listitem" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <span class="rc-badge rc-badge--simple" style="font-size:0.65rem">SIMPLE</span>
+          <span style="font-family:var(--mono);font-size:0.75rem;color:var(--text2)">Arrive 7:48 PM</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <span class="mode-chip mode-rail">HyperRail</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;padding-top:8px;border-top:1px solid var(--border)">
+          <div><span style="display:block;font-size:1.1rem;font-weight:700;color:var(--text)">46 min</span><span style="display:block;font-family:var(--mono);font-size:0.65rem;color:var(--text3);margin-top:2px">DURATION</span></div>
+          <div><span style="display:block;font-size:1.1rem;font-weight:700;color:var(--text)">0</span><span style="display:block;font-family:var(--mono);font-size:0.65rem;color:var(--text3);margin-top:2px">TRANSFERS</span></div>
+          <div><span style="display:block;font-size:1.1rem;font-weight:700;color:var(--text)">620 cr</span><span style="display:block;font-family:var(--mono);font-size:0.65rem;color:var(--text3);margin-top:2px">CREDITS</span></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;padding:16px;background:var(--bg2);border-radius:var(--r);font-size:0.78rem">
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--text2);font-weight:500">Kandy Central</span><span style="font-family:var(--mono);color:var(--text3)">7:02 PM</span></div>
+          <div style="display:flex;align-items:center;gap:8px;color:var(--text3);font-family:var(--mono);font-size:0.72rem;padding-left:8px"><span style="width:1px;height:14px;background:var(--border)"></span>HyperRail · Platform 02 · 44 min</div>
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--accent);font-weight:600">Colombo Central</span><span style="font-family:var(--mono);color:var(--accent)">7:48 PM</span></div>
+        </div>
+        <button class="btn-outline" style="width:100%" onclick="nav('live')" aria-label="Choose this simple route">Choose Route →</button>
+      </article>
+
+      <article role="listitem" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <span class="rc-badge rc-badge--flex" style="font-size:0.65rem">FLEXIBLE</span>
+          <span style="font-family:var(--mono);font-size:0.75rem;color:var(--text2)">Arrive 7:43 PM</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <span class="mode-chip mode-road">Smart Road</span>
+          <span style="color:var(--text3)">→</span>
+          <span class="mode-chip mode-rail">HyperRail</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;padding-top:8px;border-top:1px solid var(--border)">
+          <div><span style="display:block;font-size:1.1rem;font-weight:700;color:var(--text)">41 min</span><span style="display:block;font-family:var(--mono);font-size:0.65rem;color:var(--text3);margin-top:2px">DURATION</span></div>
+          <div><span style="display:block;font-size:1.1rem;font-weight:700;color:var(--text)">1</span><span style="display:block;font-family:var(--mono);font-size:0.65rem;color:var(--text3);margin-top:2px">TRANSFER</span></div>
+          <div><span style="display:block;font-size:1.1rem;font-weight:700;color:var(--text)">760 cr</span><span style="display:block;font-family:var(--mono);font-size:0.65rem;color:var(--text3);margin-top:2px">CREDITS</span></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;padding:16px;background:var(--bg2);border-radius:var(--r);font-size:0.78rem">
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--text2);font-weight:500">Kandy Central</span><span style="font-family:var(--mono);color:var(--text3)">7:02 PM</span></div>
+          <div style="display:flex;align-items:center;gap:8px;color:var(--text3);font-family:var(--mono);font-size:0.72rem;padding-left:8px"><span style="width:1px;height:14px;background:var(--border)"></span>Smart Road pod · 8 min</div>
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--text2)">Kandy Station</span><span style="font-family:var(--mono);color:var(--text3)">7:10 PM</span></div>
+          <div style="display:flex;align-items:center;gap:8px;color:var(--text3);font-family:var(--mono);font-size:0.72rem;padding-left:8px"><span style="width:1px;height:14px;background:var(--border)"></span>HyperRail · Platform 06 · 31 min</div>
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--accent);font-weight:600">Colombo Central</span><span style="font-family:var(--mono);color:var(--accent)">7:43 PM</span></div>
+        </div>
+        <button class="btn-outline" style="width:100%" onclick="nav('live')" aria-label="Choose this flexible route">Choose Route →</button>
+      </article>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ╔══════════════════════════════════════╗
+     PAGE: LIVE JOURNEY
+╚══════════════════════════════════════╝ -->
+<div id="page-live" class="page" aria-label="Live Journey">
+  <div class="journey-panel-section">
+    <div class="section-header-split" style="margin-bottom:28px">
+      <div>
+        <p class="section-tag" aria-hidden="true">Live journey</p>
+        <h1 class="section-h">Kandy → Colombo Central</h1>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <button class="btn-warn" id="delay-btn" onclick="simulateDelay()" aria-label="Simulate a train delay">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Simulate Delay
+        </button>
+        <button class="btn-outline" onclick="speakInstruction()" aria-label="Listen to directions">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          Listen
+        </button>
+      </div>
+    </div>
+
+    <div class="journey-panel">
+      <!-- Main panel -->
+      <div class="jp-main">
+        <div class="jp-header">
+          <div>
+            <p style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);margin-bottom:6px">ARRIVING</p>
+            <p style="font-family:var(--serif);font-size:1.5rem;color:var(--text)" id="arrive-display">7:40 PM</p>
+          </div>
+          <div class="jp-arrive-badge">
+            <span class="live-pulse" aria-hidden="true"></span>
+            Live tracking active
+          </div>
+        </div>
+        <div class="jp-progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" aria-label="Journey progress">
+          <div class="jp-progress-fill" id="progress-fill" style="width:30%"></div>
+        </div>
+        <div class="jp-body">
+          <!-- Next step -->
+          <div class="next-step">
+            <p class="ns-eyebrow">NEXT STEP</p>
+            <h2 class="ns-action" id="ns-action">Take HyperRail</h2>
+            <p class="ns-platform" id="ns-platform">Platform 04</p>
+            <div class="ns-chips">
+              <div class="ns-chip">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                <span id="leaves-in">Leaves in 6 min</span>
+              </div>
+              <div class="ns-chip">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>120 m away</span>
+              </div>
+            </div>
+            <div class="ns-actions">
+              <button class="btn-primary btn-sm" onclick="speakInstruction()" aria-label="Navigate to platform">Navigate to Platform</button>
+              <button class="btn-ghost btn-sm" onclick="speakInstruction()" aria-label="Listen to directions">Listen</button>
+            </div>
+          </div>
+
+          <!-- Timeline -->
+          <div class="timeline-block" aria-label="Journey timeline" role="list">
+            <div class="tl-item" role="listitem">
+              <div class="tl-dot-col"><div class="tl-dot done" aria-hidden="true"></div><div class="tl-line done" aria-hidden="true"></div></div>
+              <div class="tl-info"><div class="tl-name done">Kandy Central</div><div class="tl-time">7:02 PM · Departed</div></div>
+            </div>
+            <div class="tl-item" role="listitem">
+              <div class="tl-dot-col"><div class="tl-dot done" aria-hidden="true"></div><div class="tl-line done" aria-hidden="true"></div></div>
+              <div class="tl-info"><div class="tl-name done" style="font-size:0.75rem;font-family:var(--mono)">Walk · 120 m · 2 min</div></div>
+            </div>
+            <div class="tl-item" role="listitem" aria-current="step">
+              <div class="tl-dot-col"><div class="tl-dot current" aria-hidden="true"></div><div class="tl-line" aria-hidden="true"></div></div>
+              <div class="tl-info">
+                <div class="tl-name active">HyperRail · Platform 04</div>
+                <div class="tl-detail">Departs <span id="tl-depart">7:04 PM</span> · 28 min ride</div>
+              </div>
+            </div>
+            <div class="tl-item" role="listitem">
+              <div class="tl-dot-col"><div class="tl-dot" aria-hidden="true"></div><div class="tl-line" aria-hidden="true"></div></div>
+              <div class="tl-info">
+                <div class="tl-name">Colombo Junction</div>
+                <div class="tl-time">7:32 PM · Transfer</div>
+              </div>
+            </div>
+            <div class="tl-item" role="listitem">
+              <div class="tl-dot-col"><div class="tl-dot" aria-hidden="true"></div><div class="tl-line" aria-hidden="true"></div></div>
+              <div class="tl-info">
+                <div class="tl-name">Autonomous Shuttle A17 · Gate 3</div>
+                <div class="tl-detail">Departs 7:34 PM · 6 min ride</div>
+              </div>
+            </div>
+            <div class="tl-item" role="listitem">
+              <div class="tl-dot-col"><div class="tl-dot dest" aria-hidden="true"></div></div>
+              <div class="tl-info">
+                <div class="tl-name" style="color:var(--accent);font-weight:600">Colombo Central</div>
+                <div class="tl-time current" id="tl-arrive">7:40 PM · Destination</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="jp-sidebar">
+        <!-- Guardian -->
+        <div class="guardian-card">
+          <div class="guardian-head">
+            <div class="guardian-ico" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <span class="guardian-title">Journey Guardian</span>
+            <span class="guardian-ok" id="guardian-status">
+              <span class="g-dot" aria-hidden="true"></span>
+              Monitoring
+            </span>
+          </div>
+          <p class="guardian-msg" id="guardian-msg">All connections on schedule. Shuttle confirmed at Gate 3 and will hold if needed.</p>
+        </div>
+
+        <!-- Delay panel (shown after simulation) -->
+        <div class="delay-panel hidden" id="delay-info-panel" aria-live="polite">
+          <div class="delay-panel-title" style="color:var(--warn);display:flex;align-items:center;gap:8px">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            Train delayed 8 minutes
+          </div>
+          <div class="delay-times-row">
+            <div class="delay-t-item"><span class="delay-t-label">New departure</span><span class="delay-t-val">7:10 PM</span></div>
+            <div class="delay-t-item"><span class="delay-t-label">New arrival</span><span class="delay-t-val">7:48 PM</span></div>
+          </div>
+          <p class="delay-note-text">Shuttle will wait. No action needed.</p>
+        </div>
+
+        <!-- Ask ORBIT -->
+        <div class="ask-orbit-panel">
+          <div class="ask-orbit-title">Ask ORBIT</div>
+          <button class="ask-option" onclick="answerOrbit('walk')" aria-label="I don't want to walk much">I don't want to walk much.</button>
+          <button class="ask-option" onclick="answerOrbit('missed')" aria-label="I missed my train">I missed my train.</button>
+          <button class="ask-option" onclick="answerOrbit('next')" aria-label="What is my next step?">What's my next step?</button>
+          <div class="ask-response" id="ask-response" aria-live="polite"></div>
+        </div>
+
+        <!-- Arrival action -->
+        <button class="btn-primary" style="width:100%;justify-content:center" onclick="showArrival()" aria-label="Mark journey as complete">
+          Complete Journey →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delay alert overlay -->
+  <div class="delay-alert-overlay" id="delay-overlay" role="dialog" aria-modal="true" aria-label="Journey delay notification" aria-hidden="true">
+    <div class="delay-alert-box">
+      <div class="da-header">
+        <span class="da-icon" aria-hidden="true">⚠</span>
+        <h2 class="da-title">Your train is delayed</h2>
+      </div>
+      <p class="da-body">We've automatically recalculated your journey. Your shuttle has been notified and will wait.</p>
+      <div class="da-times">
+        <div class="da-time"><span class="da-time-label">New departure</span><span class="da-time-val">7:10 PM</span></div>
+        <div class="da-time"><span class="da-time-label">New arrival</span><span class="da-time-val">7:48 PM</span></div>
+      </div>
+      <p class="da-note">Shuttle A17 confirmed holding at Gate 3. No action needed.</p>
+      <button class="btn-primary" onclick="closeDelay()" aria-label="Continue your journey">Continue Journey →</button>
+    </div>
+  </div>
+
+  <!-- Arrival modal -->
+  <div class="delay-alert-overlay" id="arrival-overlay" role="dialog" aria-modal="true" aria-label="Journey complete" aria-hidden="true">
+    <div class="delay-alert-box" style="border-color:rgba(16,185,129,0.35);text-align:center;align-items:center">
+      <div style="width:72px;height:72px;border-radius:50%;background:var(--accent-dim);border:2px solid rgba(16,185,129,0.3);display:flex;align-items:center;justify-content:center;color:var(--accent)" aria-hidden="true">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <p style="font-family:var(--mono);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3)">You've arrived.</p>
+      <h2 style="font-family:var(--serif);font-size:2rem;color:var(--text)">Colombo Central</h2>
+      <p style="font-family:var(--mono);font-size:0.8rem;color:var(--accent)">Journey complete ✓</p>
+      <div class="arrival-stats-row">
+        <div style="display:flex;flex-direction:column;gap:4px;align-items:center"><span style="font-family:var(--serif);font-size:1.5rem;color:var(--text)">42 min</span><span style="font-family:var(--mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text3)">Duration</span></div>
+        <div style="display:flex;flex-direction:column;gap:4px;align-items:center"><span style="font-family:var(--serif);font-size:1.5rem;color:var(--text)">1</span><span style="font-family:var(--mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text3)">Transfer</span></div>
+        <div style="display:flex;flex-direction:column;gap:4px;align-items:center"><span style="font-family:var(--serif);font-size:1.5rem;color:var(--text)">840 cr</span><span style="font-family:var(--mono);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text3)">Credits</span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;width:100%;align-items:center">
+        <p style="font-size:0.85rem;color:var(--text2)">How was your journey?</p>
+        <div style="display:flex;gap:10px" role="group" aria-label="Rate your journey">
+          <button class="btn-ghost btn-sm" onclick="rateJourney(this)" aria-label="Rate: Great">Great</button>
+          <button class="btn-ghost btn-sm" onclick="rateJourney(this)" aria-label="Rate: Okay">Okay</button>
+          <button class="btn-ghost btn-sm" onclick="rateJourney(this)" aria-label="Rate: Difficult">Difficult</button>
+        </div>
+      </div>
+      <button class="btn-primary" style="width:100%" onclick="closeArrival()" aria-label="Done">Done</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ╔══════════════════════════════════════╗
+     PAGE: EXPLORE
+╚══════════════════════════════════════╝ -->
+<div id="page-explore" class="page" aria-label="Explore the ORBIT network">
+  <div class="section" style="padding-top:60px">
+    <div class="section-header">
+      <p class="section-tag" aria-hidden="true">Network overview</p>
+      <h1 class="section-h">The ORBIT Network</h1>
+      <p class="section-sub">Sri Lanka's integrated transport grid for 2100 — every route, every mode, live.</p>
+    </div>
+
+    <div class="explore-layout">
+      <div>
+        <div class="map-container" aria-label="ORBIT network map of Sri Lanka">
+          <svg viewBox="0 0 800 500" class="map-svg-full" role="img" aria-label="Interactive network map">
+            <defs>
+              <pattern id="mapgrid" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+              </pattern>
+              <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="rgba(99,102,241,0.15)"/>
+                <stop offset="100%" stop-color="transparent"/>
+              </radialGradient>
+            </defs>
+            <rect width="800" height="500" fill="url(#mapgrid)"/>
+            <ellipse cx="400" cy="250" rx="200" ry="150" fill="url(#glow1)"/>
+
+            <!-- HyperRail lines -->
+            <path d="M 120 80 Q 280 120 400 200 Q 520 280 660 240" stroke="#6366f1" stroke-width="2.5" fill="none" opacity="0.8"/>
+            <path d="M 160 380 Q 300 320 400 200 Q 500 80 640 100" stroke="#6366f1" stroke-width="2" fill="none" opacity="0.5" stroke-dasharray="8 4"/>
+
+            <!-- Bus routes -->
+            <path d="M 200 420 L 400 200 L 580 400" stroke="#10b981" stroke-width="2" fill="none" opacity="0.6"/>
+            <path d="M 400 80 L 400 420" stroke="#10b981" stroke-width="1.5" fill="none" opacity="0.35" stroke-dasharray="6 6"/>
+
+            <!-- Air routes -->
+            <path d="M 120 80 Q 400 20 660 240" stroke="#f59e0b" stroke-width="1.5" fill="none" opacity="0.4" stroke-dasharray="10 5"/>
+            <path d="M 200 420 Q 400 480 660 240" stroke="#f59e0b" stroke-width="1" fill="none" opacity="0.25" stroke-dasharray="8 4"/>
+
+            <!-- Smart roads -->
+            <path d="M 100 300 L 680 300" stroke="#8b5cf6" stroke-width="2" fill="none" opacity="0.45"/>
+            <path d="M 300 460 L 500 460 L 600 380" stroke="#8b5cf6" stroke-width="1.5" fill="none" opacity="0.35"/>
+
+            <!-- Station nodes -->
+            <!-- Colombo (center) -->
+            <circle cx="400" cy="200" r="10" fill="#6366f1" opacity="0.95"/>
+            <circle cx="400" cy="200" r="18" fill="rgba(99,102,241,0.15)" stroke="rgba(99,102,241,0.3)" stroke-width="1"/>
+            <!-- Kandy -->
+            <circle cx="400" cy="80" r="8" fill="#6366f1" opacity="0.85"/>
+            <circle cx="400" cy="80" r="14" fill="rgba(99,102,241,0.1)" stroke="rgba(99,102,241,0.25)" stroke-width="1"/>
+            <!-- Airport -->
+            <circle cx="660" cy="240" r="8" fill="#f59e0b" opacity="0.85"/>
+            <circle cx="660" cy="240" r="14" fill="rgba(245,158,11,0.1)" stroke="rgba(245,158,11,0.25)" stroke-width="1"/>
+            <!-- Galle -->
+            <circle cx="200" cy="420" r="7" fill="#10b981" opacity="0.8"/>
+            <!-- Jaffna -->
+            <circle cx="120" cy="80" r="7" fill="#6366f1" opacity="0.75"/>
+            <!-- Negombo -->
+            <circle cx="580" cy="400" r="6" fill="#10b981" opacity="0.7"/>
+            <!-- Trinco -->
+            <circle cx="640" cy="100" r="6" fill="#6366f1" opacity="0.65"/>
+
+            <!-- Labels -->
+            <text x="400" y="228" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="13" font-family="JetBrains Mono, monospace" font-weight="500">Colombo</text>
+            <text x="400" y="62" text-anchor="middle" fill="rgba(255,255,255,0.75)" font-size="11" font-family="JetBrains Mono, monospace">Kandy</text>
+            <text x="680" y="235" text-anchor="start" fill="rgba(255,255,255,0.65)" font-size="10" font-family="JetBrains Mono, monospace">Airport</text>
+            <text x="185" y="445" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="10" font-family="JetBrains Mono, monospace">Galle</text>
+            <text x="108" y="75" text-anchor="middle" fill="rgba(255,255,255,0.55)" font-size="10" font-family="JetBrains Mono, monospace">Jaffna</text>
+            <text x="596" y="418" text-anchor="middle" fill="rgba(255,255,255,0.55)" font-size="10" font-family="JetBrains Mono, monospace">Negombo</text>
+          </svg>
+        </div>
+
+        <!-- Mode cards under map -->
+        <div class="explore-mode-cards" role="list">
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:18px 16px" role="listitem">
+            <div style="color:#818cf8;margin-bottom:10px" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M4 12h16"/><path d="M8 18h.01M16 18h.01"/></svg></div>
+            <div style="font-size:0.88rem;font-weight:600;color:var(--text);margin-bottom:6px">HyperRail</div>
+            <div style="font-family:var(--mono);font-size:0.7rem;color:var(--text3)">800 km/h · 14 routes · Maglev</div>
+          </div>
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:18px 16px" role="listitem">
+            <div style="color:#34d399;margin-bottom:10px" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 6v6"/><path d="M16 6v6"/><path d="M2 12h19.6"/><path d="M18 18h3s.5-1.7.8-4.8c.1-1.1.2-2.2.2-3.2A7 7 0 0 0 4 9v4c0 .3 0 .6.1.9l.7 3.1H18Z"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></div>
+            <div style="font-size:0.88rem;font-weight:600;color:var(--text);margin-bottom:6px">Autonomous Bus</div>
+            <div style="font-family:var(--mono);font-size:0.7rem;color:var(--text3)">840 active · Zero emission · EV</div>
+          </div>
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:18px 16px" role="listitem">
+            <div style="color:#fbbf24;margin-bottom:10px" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21 4 19.5 2.5c-1.5-1.5-3.5-1.5-5 0L11 6 2.8 6.2c-.5 0-.9.3-1.1.7l-.4 1.5c-.1.5.1 1 .5 1.3L6 12l-1.8 1.8c-.5.5-.5 1.2 0 1.7l1.5 1.5c.5.5 1.2.5 1.7 0L9 15l3.5 2.5c.3.4.8.6 1.3.5l1.5-.4c.4-.2.7-.6.7-1.1l-.2-3.3Z"/></svg></div>
+            <div style="font-size:0.88rem;font-weight:600;color:var(--text);margin-bottom:6px">Air Transit</div>
+            <div style="font-family:var(--mono);font-size:0.7rem;color:var(--text3)">3 corridors · Personal AVs</div>
+          </div>
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:18px 16px" role="listitem">
+            <div style="color:#a78bfa;margin-bottom:10px" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 17 12 3l9 14"/><path d="M12 3v14"/><path d="M5 17h14"/></svg></div>
+            <div style="font-size:0.88rem;font-weight:600;color:var(--text);margin-bottom:6px">Smart Roads</div>
+            <div style="font-family:var(--mono);font-size:0.7rem;color:var(--text3)">12,400 km · AI optimized</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Legend + stats panel -->
+      <div class="map-legend-panel">
+        <div class="legend-card">
+          <div class="legend-title">Map legend</div>
+          <div class="legend-item"><div class="legend-line" style="background:#6366f1"></div><span class="legend-item-name">HyperRail</span><span class="legend-item-count">14 routes</span></div>
+          <div class="legend-item"><div class="legend-line" style="background:#10b981"></div><span class="legend-item-name">Autonomous Bus</span><span class="legend-item-count">840 active</span></div>
+          <div class="legend-item"><div class="legend-line" style="background:#f59e0b;height:2px;border-top:2px dashed #f59e0b;background:none"></div><span class="legend-item-name">Air Transit</span><span class="legend-item-count">3 corridors</span></div>
+          <div class="legend-item"><div class="legend-line" style="background:#8b5cf6"></div><span class="legend-item-name">Smart Roads</span><span class="legend-item-count">12,400 km</span></div>
+        </div>
+        <div class="stats-grid-explore">
+          <div class="es-stat"><span class="es-val">2.4M</span><span class="es-key">Daily journeys</span></div>
+          <div class="es-stat"><span class="es-val">99.7%</span><span class="es-key">On-time rate</span></div>
+          <div class="es-stat"><span class="es-val">6</span><span class="es-key">Major hubs</span></div>
+          <div class="es-stat"><span class="es-val">0g</span><span class="es-key">CO₂ emissions</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ╔══════════════════════════════════════╗
+     PAGE: PROFILE
+╚══════════════════════════════════════╝ -->
+<div id="page-profile" class="page" aria-label="Profile">
+  <div class="section" style="padding-top:60px">
+    <div class="section-header">
+      <p class="section-tag" aria-hidden="true">Your account</p>
+      <h1 class="section-h">Alex</h1>
+    </div>
+
+    <div class="profile-layout">
+      <!-- Sidebar nav -->
+      <div class="profile-sidebar" role="navigation" aria-label="Profile sections">
+        <div class="profile-hero-card">
+          <div class="profile-avatar" aria-hidden="true">A</div>
+          <div class="profile-name-big">Alex</div>
+          <div class="profile-id-tag">ORBIT ID · <span style="font-family:var(--mono)">ORB-4829</span></div>
+        </div>
+        <div class="profile-nav-list">
+          <button class="profile-nav-item active" data-tab="stats" onclick="profileTab('stats')" aria-label="View journey stats">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            Journey Stats
+          </button>
+          <button class="profile-nav-item" data-tab="pass" onclick="profileTab('pass')" aria-label="View ORBIT Pass">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            ORBIT Pass
+          </button>
+          <button class="profile-nav-item" data-tab="a11y" onclick="profileTab('a11y')" id="nav-a11y-btn" aria-label="View accessibility settings">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+            Accessibility
+          </button>
+          <button class="profile-nav-item" aria-label="Notification preferences">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            Notifications
+          </button>
+          <button class="profile-nav-item" aria-label="Privacy settings">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Privacy
+          </button>
+        </div>
+      </div>
+
+      <!-- Main content -->
+      <div class="profile-main">
+
+        <!-- Stats tab -->
+        <div id="tab-stats" class="profile-tab">
+          <div class="profile-stats-card">
+            <div class="ps-grid" role="list" aria-label="Journey statistics">
+              <div class="ps-item" role="listitem"><span class="ps-val">128</span><span class="ps-key">Journeys</span></div>
+              <div class="ps-item" role="listitem"><span class="ps-val">4,280</span><span class="ps-key">Kilometres</span></div>
+              <div class="ps-item" role="listitem"><span class="ps-val">12</span><span class="ps-key">Cities visited</span></div>
+            </div>
+          </div>
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px">
+            <p style="font-family:var(--mono);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);margin-bottom:20px">Recent journeys</p>
+            <div style="display:flex;flex-direction:column;gap:2px">
+              <div class="journey-row" style="padding:14px 16px;background:var(--surface2);border-radius:var(--r);align-items:center">
+                <span style="font-weight:500;font-size:0.9rem">Kandy → Colombo</span>
+                <span style="font-family:var(--mono);font-size:0.78rem;color:var(--text3)">Today · 7:40 PM</span>
+                <span style="font-size:0.78rem;color:var(--text2)">38 min</span>
+                <span style="font-family:var(--mono);font-size:0.75rem;color:var(--accent)">On time</span>
+              </div>
+              <div class="journey-row" style="padding:14px 16px;border-radius:var(--r);align-items:center">
+                <span style="font-weight:500;font-size:0.9rem">Colombo → Airport</span>
+                <span style="font-family:var(--mono);font-size:0.78rem;color:var(--text3)">Yesterday · 9:15 AM</span>
+                <span style="font-size:0.78rem;color:var(--text2)">52 min</span>
+                <span style="font-family:var(--mono);font-size:0.75rem;color:var(--accent)">On time</span>
+              </div>
+              <div class="journey-row" style="padding:14px 16px;border-radius:var(--r);align-items:center">
+                <span style="font-weight:500;font-size:0.9rem">Galle → Colombo</span>
+                <span style="font-family:var(--mono);font-size:0.78rem;color:var(--text3)">Sep 18 · 2:30 PM</span>
+                <span style="font-size:0.78rem;color:var(--text2)">1h 12min</span>
+                <span style="font-family:var(--mono);font-size:0.75rem;color:var(--warn)">+4 min</span>
+              </div>
+              <div class="journey-row" style="padding:14px 16px;border-radius:var(--r);align-items:center">
+                <span style="font-weight:500;font-size:0.9rem">Kandy → Jaffna</span>
+                <span style="font-family:var(--mono);font-size:0.78rem;color:var(--text3)">Sep 15 · 7:00 AM</span>
+                <span style="font-size:0.78rem;color:var(--text2)">2h 8min</span>
+                <span style="font-family:var(--mono);font-size:0.75rem;color:var(--accent)">On time</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pass tab -->
+        <div id="tab-pass" class="profile-tab" style="display:none">
+          <div class="pass-card" aria-label="ORBIT Pass">
+            <div class="pass-top">
+              <span style="font-family:var(--mono);font-size:1rem;font-weight:600;letter-spacing:0.22em;color:var(--primary)">ORBIT</span>
+              <span class="pass-valid-badge">Valid today</span>
+            </div>
+            <div class="pass-holder">Alex</div>
+            <div class="pass-modes-row" aria-label="Supported transport modes">
+              <span class="pass-mode-tag">🚄 Train</span>
+              <span class="pass-mode-tag">🚌 Bus</span>
+              <span class="pass-mode-tag">✈ Air Transit</span>
+              <span class="pass-mode-tag">🚗 Smart Road</span>
+            </div>
+            <div class="pass-barcode" aria-hidden="true">
+              <div class="bc" style="width:3px"></div><div class="bc" style="width:1px"></div><div class="bc" style="width:4px"></div>
+              <div class="bc" style="width:2px"></div><div class="bc" style="width:1px"></div><div class="bc" style="width:3px"></div>
+              <div class="bc" style="width:2px"></div><div class="bc" style="width:4px"></div><div class="bc" style="width:1px"></div>
+              <div class="bc" style="width:3px"></div><div class="bc" style="width:2px"></div><div class="bc" style="width:1px"></div>
+              <div class="bc" style="width:4px"></div><div class="bc" style="width:2px"></div><div class="bc" style="width:3px"></div>
+              <div class="bc" style="width:1px"></div><div class="bc" style="width:2px"></div><div class="bc" style="width:4px"></div>
+              <div class="bc" style="width:3px"></div><div class="bc" style="width:1px"></div><div class="bc" style="width:2px"></div>
+            </div>
+          </div>
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:24px;margin-top:16px">
+            <p style="font-family:var(--mono);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);margin-bottom:16px">Pass details</p>
+            <div class="pass-details-grid">
+              <div><span style="display:block;font-size:0.78rem;color:var(--text3);margin-bottom:4px">Holder</span><span style="font-weight:500">Alex</span></div>
+              <div><span style="display:block;font-size:0.78rem;color:var(--text3);margin-bottom:4px">Pass ID</span><span style="font-family:var(--mono);font-size:0.85rem">ORB-4829</span></div>
+              <div><span style="display:block;font-size:0.78rem;color:var(--text3);margin-bottom:4px">Valid until</span><span style="font-weight:500">Dec 31, 2100</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Accessibility tab -->
+        <div id="tab-a11y" class="profile-tab" style="display:none">
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:28px;margin-bottom:16px">
+            <p style="font-family:var(--mono);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);margin-bottom:6px">Accessibility</p>
+            <p style="font-size:0.88rem;color:var(--text2)">Customize your ORBIT experience. All changes are saved automatically to your account.</p>
+          </div>
+          <div class="a11y-grid" role="list">
+            <div class="a11y-row" role="listitem">
+              <div class="a11y-info">
+                <div class="a11y-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><text x="3" y="17" font-size="13" fill="currentColor" stroke="none" font-family="serif">Aa</text></svg></div>
+                <div><div class="a11y-label">Larger Text</div><div class="a11y-desc">Increase font sizes throughout the interface</div></div>
+              </div>
+              <button class="toggle" id="toggle-large" onclick="toggleA('large-text','toggle-large')" role="switch" aria-checked="false" aria-label="Toggle larger text"><span class="toggle-knob"></span></button>
+            </div>
+            <div class="a11y-row" role="listitem">
+              <div class="a11y-info">
+                <div class="a11y-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg></div>
+                <div><div class="a11y-label">Reduce Motion</div><div class="a11y-desc">Minimize animations and transitions</div></div>
+              </div>
+              <button class="toggle" id="toggle-motion" onclick="toggleA('reduce-motion','toggle-motion')" role="switch" aria-checked="false" aria-label="Toggle reduce motion"><span class="toggle-knob"></span></button>
+            </div>
+            <div class="a11y-row" role="listitem">
+              <div class="a11y-info">
+                <div class="a11y-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></div>
+                <div><div class="a11y-label">High Contrast</div><div class="a11y-desc">Increase contrast and strengthen visual separation</div></div>
+              </div>
+              <button class="toggle" id="toggle-contrast" onclick="toggleA('high-contrast','toggle-contrast')" role="switch" aria-checked="false" aria-label="Toggle high contrast"><span class="toggle-knob"></span></button>
+            </div>
+            <div class="a11y-row" role="listitem">
+              <div class="a11y-info">
+                <div class="a11y-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></div>
+                <div><div class="a11y-label">Voice Guidance</div><div class="a11y-desc">Spoken turn-by-turn directions and announcements</div></div>
+              </div>
+              <button class="toggle" id="toggle-voice" onclick="toggleVoice()" role="switch" aria-checked="false" aria-label="Toggle voice guidance"><span class="toggle-knob"></span></button>
+            </div>
+            <div class="a11y-row" role="listitem">
+              <div class="a11y-info">
+                <div class="a11y-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+                <div><div class="a11y-label">Simplified Navigation</div><div class="a11y-desc">Show one clear instruction at a time during journeys</div></div>
+              </div>
+              <button class="toggle" id="toggle-simple" onclick="toggleA('simplified','toggle-simple')" role="switch" aria-checked="false" aria-label="Toggle simplified navigation"><span class="toggle-knob"></span></button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Toast -->
+<div class="toast" id="toast" aria-live="polite" aria-hidden="true"></div>
+
+<!-- Auth Modal -->
+<div class="auth-overlay" id="auth-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+  <div class="auth-modal" id="auth-modal">
+    <button class="auth-close" onclick="closeAuth()" aria-label="Close">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+
+    <!-- Logo -->
+    <div class="auth-logo" aria-hidden="true">ORBIT</div>
+
+    <!-- Tab switcher -->
+    <div class="auth-tabs" role="tablist">
+      <button class="auth-tab active" id="tab-login-btn" role="tab" aria-selected="true" aria-controls="auth-login" onclick="switchAuthTab('login')">Sign in</button>
+      <button class="auth-tab" id="tab-signup-btn" role="tab" aria-selected="false" aria-controls="auth-signup" onclick="switchAuthTab('signup')">Create account</button>
+    </div>
+
+    <!-- Login panel -->
+    <div id="auth-login" class="auth-panel" role="tabpanel" aria-labelledby="tab-login-btn">
+      <form class="auth-form" onsubmit="submitAuth(event,'login')">
+        <div class="auth-field">
+          <label class="auth-label" for="login-email">Email</label>
+          <input class="auth-input" id="login-email" type="email" placeholder="you@example.com" autocomplete="email" required />
+        </div>
+        <div class="auth-field">
+          <label class="auth-label" for="login-password">Password</label>
+          <input class="auth-input" id="login-password" type="password" placeholder="••••••••" autocomplete="current-password" required />
+          <button type="button" class="auth-forgot" onclick="toast('Password reset link sent.')">Forgot password?</button>
+        </div>
+        <button type="submit" class="auth-submit">Sign in to ORBIT</button>
+        <p class="auth-alt">No account? <button type="button" class="auth-link" onclick="switchAuthTab('signup')">Create one</button></p>
+      </form>
+    </div>
+
+    <!-- Signup panel -->
+    <div id="auth-signup" class="auth-panel" style="display:none" role="tabpanel" aria-labelledby="tab-signup-btn">
+      <form class="auth-form" onsubmit="submitAuth(event,'signup')">
+        <div class="auth-row">
+          <div class="auth-field">
+            <label class="auth-label" for="signup-first">First name</label>
+            <input class="auth-input" id="signup-first" type="text" placeholder="Alex" autocomplete="given-name" required />
+          </div>
+          <div class="auth-field">
+            <label class="auth-label" for="signup-last">Last name</label>
+            <input class="auth-input" id="signup-last" type="text" placeholder="Perera" autocomplete="family-name" required />
+          </div>
+        </div>
+        <div class="auth-field">
+          <label class="auth-label" for="signup-email">Email</label>
+          <input class="auth-input" id="signup-email" type="email" placeholder="you@example.com" autocomplete="email" required />
+        </div>
+        <div class="auth-field">
+          <label class="auth-label" for="signup-password">Password</label>
+          <input class="auth-input" id="signup-password" type="password" placeholder="At least 8 characters" autocomplete="new-password" required minlength="8" />
+        </div>
+        <div class="auth-field">
+          <label class="auth-label" for="signup-confirm">Confirm password</label>
+          <input class="auth-input" id="signup-confirm" type="password" placeholder="Repeat password" autocomplete="new-password" required minlength="8" />
+        </div>
+        <button type="submit" class="auth-submit">Create account</button>
+        <p class="auth-alt">Already have an account? <button type="button" class="auth-link" onclick="switchAuthTab('login')">Sign in</button></p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
